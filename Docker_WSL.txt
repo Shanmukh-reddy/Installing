@@ -20,11 +20,16 @@ For Docker
             > wsl --set-default Kali-linux
             > Docker version  [END]
         From Kali-linux
-            $ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add –
-              echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list
-            $ sudo apt-get update
-            $ sudo apt-get install docker-ce
-            $ sudo /etc/init.d/docker start (it doesnt work)
-
+            $ sudo apt update
+	    $ sudo apt install -y docker.io
+	    $ sudo systemctl enable docker --now
+	    $ docker
+	    $ sudo usermod -aG docker $USER
+	    $ printf '%s\n' "deb https://download.docker.com/linux/debian bullseye stable" |
+  sudo tee /etc/apt/sources.list.d/docker-ce.list
+            $ curl -fsSL https://download.docker.com/linux/debian/gpg |
+  sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker-ce-archive-keyring.gpg
+  	    $ sudo apt update
+	    $ sudo apt install -y docker-ce docker-ce-cli containerd.io
 For VS Code 
         Install the extention of "Remote WSL" 
